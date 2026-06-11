@@ -23,9 +23,7 @@ namespace SalesCatalog.Controllers
 			var products = await _parserService.GetProductsAsync();
 
 			if (products == null || products.Count == 0)
-			{
 				return NotFound("Товары не найдены или возникла ошибка при парсинге.");
-			}
 			return Ok(products);
 		}
 		[HttpGet("electrosila")]
@@ -33,9 +31,7 @@ namespace SalesCatalog.Controllers
 		{
 			var products = await _electrosilaParser.GetProductsAsync();
 			if (products == null || products.Count == 0)
-			{
 				return NotFound("Товары не найдены или возникла ошибка при парсинге.");
-			}
 			return Ok(products);
 		}
 		[HttpGet("Mts")]

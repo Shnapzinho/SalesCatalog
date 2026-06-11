@@ -36,7 +36,7 @@ namespace SalesCatalog
 				firstIdOnPrevPage = firstIdOnCurPage;
 				products.AddRange(pageProducts);
 				page++;
-				await Task.Delay(500);
+				await Task.Delay(300);
 
 		}
 			return products;

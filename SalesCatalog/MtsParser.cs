@@ -58,7 +58,7 @@ namespace SalesCatalog
 			{
 				List<Product> products = await ParseCategoryAsync(url, category);
 				allProducts.AddRange(products);
-				await Task.Delay(500);
+				await Task.Delay(300);
 			}
 			return allProducts;
 		}

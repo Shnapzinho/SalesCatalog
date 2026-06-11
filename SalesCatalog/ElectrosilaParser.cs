@@ -45,7 +45,7 @@ namespace SalesCatalog
 				{
 					var categoryProducts = await ParseCategoryAsync(category.Url, category.Name);
 					allProducts.AddRange(categoryProducts);
-					await Task.Delay(500);
+					await Task.Delay(300);
 				}
 			}
 			catch (Exception ex)
