@@ -6,7 +6,7 @@ using SalesCatalog.Entity;
 using System.Globalization;
 using System.Net;
 
-namespace SalesCatalog
+namespace SalesCatalog.Service
 {
 	public class ParserService
 	{
@@ -81,7 +81,8 @@ namespace SalesCatalog
 						Price = jsonData.price,
 						Url = _baseUrl + linkElement?.GetAttribute("href"),
 						ImageUrl = imgElement?.GetAttribute("src") ?? imgElement?.GetAttribute("data-src"),
-						DiscountPercent = discountElement?.TextContent.Trim()
+						DiscountPercent = discountElement?.TextContent.Trim(),
+						Shop = "5 элемент"
 					};
 
 					if (oldPriceElement != null)

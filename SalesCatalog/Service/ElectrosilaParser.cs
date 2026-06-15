@@ -3,7 +3,7 @@ using SalesCatalog.Entity;
 using System.Globalization;
 using System.Text;
 
-namespace SalesCatalog
+namespace SalesCatalog.Service
 {
 	public class ElectrosilaParser
 	{
@@ -110,7 +110,8 @@ namespace SalesCatalog
 							Category = categoryName,
 							Url = item.QuerySelector("a")?.GetAttribute("href"),
 							ImageUrl = imgElement?.GetAttribute("src"),
-							DiscountPercent = discountPercent
+							DiscountPercent = discountPercent,
+							Shop = "Электросила"
 						};
 						if (priceElements.Count >= 2)
 						{

@@ -2,7 +2,7 @@
 using SalesCatalog.Entity;
 using System.Globalization;
 
-namespace SalesCatalog
+namespace SalesCatalog.Service
 {
 	public class MtsParser
 	{
@@ -123,7 +123,8 @@ namespace SalesCatalog
 							OldPrice = oldPrice,
 							DiscountPercent = discountPercent,
 							Url = _baseUrl + linkElement?.GetAttribute("href"),
-							ImageUrl = _baseUrl + imgElement?.GetAttribute("src")
+							ImageUrl = _baseUrl + imgElement?.GetAttribute("src"),
+							Shop = "Мтс"
 						};
 						products.Add(product);
 						Console.WriteLine($"Добавлен продукт {product.Name}");

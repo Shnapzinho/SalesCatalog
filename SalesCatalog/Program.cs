@@ -1,4 +1,4 @@
-using SalesCatalog;
+using SalesCatalog.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,9 +8,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddMemoryCache();
 builder.Services.AddScoped<ParserService>();
 builder.Services.AddScoped<ElectrosilaParser>();
 builder.Services.AddScoped<MtsParser>();
+builder.Services.AddScoped<ProductCompareService>();
 
 var app = builder.Build();
 

@@ -10,6 +10,8 @@
 		public string ImageUrl { get; set; }
 		public string DiscountPercent { get; set; }
 		public decimal? OldPrice { get; set; }
+		public bool IsBestDeal { get; set; } = false;
+		public string Shop { get; set; }
 
 	}
 }
