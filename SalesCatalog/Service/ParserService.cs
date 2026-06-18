@@ -94,6 +94,7 @@ namespace SalesCatalog.Service
 					}
 
 					products.Add(product);
+					Console.WriteLine($"Добавлен продукт {product.Name}. Магазин {product.Shop}");
 				}
 			}
 			catch (Exception ex)

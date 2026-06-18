@@ -72,7 +72,6 @@ namespace SalesCatalog.Service
 					break;
 				firstIdOnPrevPage = firstIdOnCurPage;
 				products.AddRange(pageProducts);
-				Console.WriteLine($"Обработана страница {pageUrl}, Категория {categoryName}");
 				page++;
 			}
 			return products;
@@ -133,7 +132,7 @@ namespace SalesCatalog.Service
 							NumberStyles.Any, CultureInfo.InvariantCulture, out decimal oldPrice))
 							product.OldPrice = oldPrice;
 						products.Add(product);
-						Console.WriteLine($"Добавлен продукт {product.Name}");
+						Console.WriteLine($"Добавлен продукт {product.Name}. Магазин {product.Shop}");
 					}
 					catch (Exception ex)
 					{

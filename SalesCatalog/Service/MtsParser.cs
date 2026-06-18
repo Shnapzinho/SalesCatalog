@@ -80,7 +80,6 @@ namespace SalesCatalog.Service
 					break;
 				firstIdOnPrevPage = firstIdOnCurPage;
 				products.AddRange(pageProducts);
-				Console.WriteLine($"Обработана категория {category}");
 				page++;
 			}
 			return products;
@@ -127,7 +126,7 @@ namespace SalesCatalog.Service
 							Shop = "Мтс"
 						};
 						products.Add(product);
-						Console.WriteLine($"Добавлен продукт {product.Name}");
+						Console.WriteLine($"Добавлен продукт {product.Name}. Магазин {product.Shop}");
 					}
 					catch(Exception ex) 
 					{

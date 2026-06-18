@@ -20,7 +20,7 @@ namespace SalesCatalog.Service
 		{
 			if (!_cache.TryGetValue("allProducts", out List<Product> allProducts))
 			{ 
-				allProducts = (await _parserService.GetProductsAsync()).Concat(await _electrosilaParser.GetProductsAsync()).Concat(await _mtsParser.ParseProductsAsync()).ToList();
+				allProducts = (await _parserService.GetProductsAsync()).Concat(await _electrosilaParser.GetProductsAsync()).Concat(await _mtsParser.ParseProductsAsync()).GroupBy(x=>x.Id).Select(x=>x.First()).ToList();
 				_cache.Set("allProducts", allProducts, TimeSpan.FromHours(1));
 			}
 			if (category != null)
