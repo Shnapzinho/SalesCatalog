@@ -22,7 +22,7 @@ h2{
     margin-bottom:20px;
 }
 .filters input, .filters select{
-    padding: 8px12px;
+    padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size:14px;
@@ -42,14 +42,14 @@ h2{
 .product-grid{
     display:flex;
     flex-wrap:wrap;
-    gap:16px;
+    gap:10px;
 }
 .product-card{
     background:white;
     border-radius:10px;
     box-shadow:0 1px 4px rgba(0,0,0,0.1);
     padding:12px;
-    width:220px;
+    width:240px;
     transition: transform 0.15s, box-shadow 0.15s;
 }
 .product-card:hover{
@@ -67,7 +67,7 @@ h2{
     color:#111;
 }
 .product card p{
-    font-size:13px;
+    font-size:12px;
     color:#555;
     margin:2px 0;
 }
@@ -103,11 +103,14 @@ h2{
 }
 .product-name {
     font-weight: bold;
+    font-size:16px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin: 6px 0;
+    margin: 5px 0;
     display: block;
+    border: 1px solid#ccc;
+    border-radius:6px;
 }
 .pagination button:disabled {
     opacity: 0.4;
