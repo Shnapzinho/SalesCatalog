@@ -109,8 +109,6 @@ h2{
     text-overflow: ellipsis;
     margin: 5px 0;
     display: block;
-    border: 1px solid#ccc;
-    border-radius:6px;
 }
 .pagination button:disabled {
     opacity: 0.4;
