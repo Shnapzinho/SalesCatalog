@@ -12,7 +12,9 @@ builder.Services.AddMemoryCache();
 builder.Services.AddScoped<ParserService>();
 builder.Services.AddScoped<ElectrosilaParser>();
 builder.Services.AddScoped<MtsParser>();
+builder.Services.AddScoped<ProductAggregatorService>();
 builder.Services.AddScoped<ProductCompareService>();
+builder.Services.AddScoped<FeaturedProductsService>();
 
 builder.Services.AddCors(options =>
 {

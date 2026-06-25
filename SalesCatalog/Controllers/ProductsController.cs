@@ -12,13 +12,17 @@ namespace SalesCatalog.Controllers
 		private readonly ElectrosilaParser _electrosilaParser;
 		private readonly MtsParser _mtsParser;
 		private readonly ProductCompareService _productCompareService;
+		private readonly ProductAggregatorService _productAggregatorService;
+		private readonly FeaturedProductsService _featuredProductsService;
 
-		public ProductsController(ParserService parserService, ElectrosilaParser electrosilaParser, MtsParser mtsParser, ProductCompareService productCompareService)
+		public ProductsController(ParserService parserService, ElectrosilaParser electrosilaParser, MtsParser mtsParser, ProductCompareService productCompareService, ProductAggregatorService productAggregatorService, FeaturedProductsService featuredProductsService)
 		{
 			_parserService = parserService;
 			_electrosilaParser = electrosilaParser;
 			_mtsParser = mtsParser;
 			_productCompareService = productCompareService;
+			_productAggregatorService = productAggregatorService;
+			_featuredProductsService = featuredProductsService;
 		}
 		[HttpGet("five-element")]
 		public async Task<ActionResult<List<Product>>> GetFiveElementProducts()
@@ -46,12 +50,20 @@ namespace SalesCatalog.Controllers
 			return Ok(products);
 		}
 		[HttpGet("Compare")]
-		public async Task<ActionResult<PagedResult<Product>>> GetCompareResult([FromQuery] string? category, [FromQuery] string? name, [FromQuery] SortType? sortingType,[FromQuery] int page)
+		public async Task<ActionResult<PagedResult<Product>>> GetCompareResult([FromQuery] string? category, [FromQuery] string? name, [FromQuery] SortType sortingType,[FromQuery] int page)
 		{
 			var compareResult = await _productCompareService.GetCompareResultAsync(category, name, sortingType, page);
 			if (compareResult == null || compareResult.Items.Count == 0)
 				return NotFound("Товары не найдены или возникла ошибка при парсинге.");
 			return Ok(compareResult);
 		}
+		[HttpGet("Main")]
+		public async Task<ActionResult<List<Product>>> GetFeaturedProducts()
+		{
+			var products = await _featuredProductsService.GetFeaturedProductsAsync();
+			if (products == null || products.Count == 0)
+				return NotFound("Товары не найдены или возникла ошибка при парсинге.");
+			return Ok(products);
+        }
 	}
 }

@@ -3,69 +3,23 @@
 <head>
     <meta charset="utf-8" />
     <title>Каталог скидок</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Каталог аукционных товаров</h1>
-    <div>
+    <h1 onclick="displayFeatured()">Каталог аукционных товаров</h1>
+    <div class="filters">
         <input type="text" id="category" placeholder="Категория" />
         <input type="text" id="name" placeholder="Название товара" />
         <select id="sortType">
-            <option value="0">Сначала дешевле</option>
-            <option value="1">Сначала больше скидка</option>
+            <option value="0">Сначала больше скидка</option>
+            <option value="1">Сначала дешевле</option>
         </select>
         <button onclick="search()">Найти</button>
     </div>
-    <div id="results"></div>
-    <div id="pagination"></div>
-    <script>
-        let currentPage = 1;
-        async function search(page = 1) {
-            currentPage = page;
-            const category = document.getElementById('category').value;
-            const name = document.getElementById('name').value;
-            const sortType = document.getElementById('sortType').value;
-
-            let url = `https://localhost:7019/api/Products/Compare?page=${page}&sortingType=${sortType}`;
-            if (category) url += `&category=${category}`;
-            if (name) url += `&name=${name}`;
-            const response = await fetch(url);
-            const data = await response.json();
-            displayResults(data);
-        }
-
-        function displayResults(data) {
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.innerHTML = '';
-            data.items.forEach(product => {
-				resultsDiv.innerHTML += `
-                    <div style="display: flex; gap: 15px; align-items: flex-start;">
-                        <img src="${product.imageUrl}" alt="${product.name}" style="width: 150px; height: 150px; object-fit: contain;">
-                        <div>
-                            <a href="${product.url}" target="_blank">
-                                <b>${product.name}</b>
-                            </a>
-                            <p>Категория: ${product.category}</p>
-                            <p>Цена: ${product.price} руб.</p>
-                            <p>Старая цена: ${product.oldPrice} руб.</p>
-                            <p>Скидка: ${product.discountPercent}</p>
-                            ${product.isBestDeal ? '<p>★ Лучшее предложение</p>' : ''}
-                        </div>
-                    </div>
-                    <hr>
-                `;
-            });
-            const paginationDiv = document.getElementById('pagination');
-            paginationDiv.innerHTML = '';
-
-            for (let i = 1; i <= data.totalPages; i++) {
-                paginationDiv.innerHTML += `
-                    <button onclick="search(${i})" 
-                        style="${i === currentPage ? 'font-weight: bold;' : ''}">
-                        ${i}
-                    </button>
-                `;
-            }
-        }
-    </script>
+<h2 id="title">Хиты продаж</h2>
+    <div id ="featured" class="product-grid"></div>
+    <div id="results" class="product-grid"></div>
+    <div id="pagination" class="pagination"></div>
+    <script src="script.js"></script>
 </body>
 </html>
