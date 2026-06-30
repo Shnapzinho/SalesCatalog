@@ -88,4 +88,15 @@ function jumpToPage(totalPages) {
     if (page > totalPages) page = totalPages;
     search(page);
 }
+async function loadCategories() {
+    const url = `${window.location.origin}/api/Products/Categories`;
+    const response = await fetch(url);
+    const categories = await response.json();
+    const datalist = document.getElementById('categoryList');
+    datalist.innerHTML = '';
+    categories.forEach(cat => {
+        datalist.innerHTML += `<option value="${cat}"></option>`;
+    })
+}
+loadCategories();
 displayFeatured();

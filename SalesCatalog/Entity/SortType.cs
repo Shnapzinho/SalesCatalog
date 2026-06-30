@@ -3,6 +3,7 @@
 	public enum SortType
 	{
 		ByDiscount,
-		ByPrice
+		ByPrice,
+		ByDifference
 	}
 }

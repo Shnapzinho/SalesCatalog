@@ -8,16 +8,18 @@
 <body>
     <h1 onclick="displayFeatured()">Каталог акционных товаров</h1>
     <div class="filters">
-        <input type="text" id="category" placeholder="Категория" />
+        <input type="text" id="category" list="categoryList" placeholder="Категория" />
+        <datalist id="categoryList"></datalist>
         <input type="text" id="name" placeholder="Название товара" />
         <select id="sortType">
             <option value="0">Сначала больше скидка</option>
             <option value="1">Сначала дешевле</option>
+            <option value="2">Сначала болше разница цен</option>
         </select>
         <button onclick="search()">Найти</button>
     </div>
-<h2 id="title">Хиты продаж</h2>
-    <div id ="featured" class="product-grid"></div>
+    <h2 id="title">Хиты продаж</h2>
+    <div id="featured" class="product-grid"></div>
     <div id="results" class="product-grid"></div>
     <div id="pagination" class="pagination"></div>
     <script src="script.js"></script>

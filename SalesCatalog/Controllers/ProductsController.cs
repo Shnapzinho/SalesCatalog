@@ -50,7 +50,7 @@ namespace SalesCatalog.Controllers
 			return Ok(products);
 		}
 		[HttpGet("Compare")]
-		public async Task<ActionResult<PagedResult<Product>>> GetCompareResult([FromQuery] string? category, [FromQuery] string? name, [FromQuery] SortType sortingType,[FromQuery] int page)
+		public async Task<ActionResult<PagedResult<Product>>> GetCompareResult([FromQuery] string? category, [FromQuery] string? name, [FromQuery] SortType sortingType, [FromQuery] int page)
 		{
 			var compareResult = await _productCompareService.GetCompareResultAsync(category, name, sortingType, page);
 			if (compareResult == null || compareResult.Items.Count == 0)
@@ -64,6 +64,12 @@ namespace SalesCatalog.Controllers
 			if (products == null || products.Count == 0)
 				return NotFound("Товары не найдены или возникла ошибка при парсинге.");
 			return Ok(products);
-        }
+		}
+		[HttpGet("Categories")]
+		public async Task<ActionResult<List<string>>> GetCategories()
+		{
+			var categories = await _productAggregatorService.GetCategoriesAsync();
+			return Ok(categories);
+		}
 	}
 }
